@@ -19,11 +19,11 @@ const slides = [
 	}
 ]
 function slidegauche(){
-	slides_check--
+	console.log("Gauche")
 	
 }
 function slidedroite(){
-	slides_check++
+	console.log("Droite")
 }
 let slides_check=0
 const flechedegauche=document.querySelector("#banner .arrow_left");
