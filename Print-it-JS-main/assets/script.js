@@ -31,3 +31,15 @@ flechedegauche.addEventListener("click",slidegauche);
 
 const flechededroite=document.querySelector("#banner .arrow_right");
 flechededroite.addEventListener("click",slidedroite);
+
+const bulletpoints=document.querySelector(".dots");
+
+for(let i=0;i<slides.length;i++){
+	const dot=document.createElement("div");
+	dot.classList.add("dot");
+	if (i===slides_check){
+		dot.classList.add("dot_selected")
+	}
+	bulletpoints.appendChild(dot)
+	
+}
