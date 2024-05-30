@@ -18,28 +18,65 @@ const slides = [
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
 	}
 ]
-function slidegauche(){
-	console.log("Gauche")
-	
-}
-function slidedroite(){
-	console.log("Droite")
-}
-let slides_check=0
-const flechedegauche=document.querySelector("#banner .arrow_left");
-flechedegauche.addEventListener("click",slidegauche);
-
-const flechededroite=document.querySelector("#banner .arrow_right");
-flechededroite.addEventListener("click",slidedroite);
 
 const bulletpoints=document.querySelector(".dots");
+const flechedegauche=document.querySelector("#banner .arrow_left");
+const flechededroite=document.querySelector("#banner .arrow_right");
+const image = document.querySelector(".banner-img");
+const BannerTxt=document.querySelector("#banner p");
+
+let slides_check=0
+
+function showSlide(media){
+	
+	if(media<0){
+		media=slides.length-1;
+	}
+	if (media>slides.length-1){
+		media=0;
+	}
+	slides_check=media;
+	BannerTxt.innerHTML=slides[media].tagLine
+	image.src="./assets/images/slideshow/"+slides[media].image;
+
+	const dotsAll = document.querySelectorAll('.dot');
+	dotsAll.forEach(dot => dot.classList.remove('dot_selected'));
+    dotsAll[media].classList.add('dot_selected');
+	
+	
+}
+
+function slidegauche(){
+	slides_check--
+	showSlide(slides_check)
+
+	
+	
+}
+
+function slidedroite(){
+	slides_check++
+	showSlide(slides_check)
+}
+
+
+
+flechedegauche.addEventListener("click",slidegauche);
+
+flechededroite.addEventListener("click",slidedroite);
+
+
+
 
 for(let i=0;i<slides.length;i++){
-	const dot=document.createElement("div");
-	dot.classList.add("dot");
+	const points=document.createElement("div");
+	points.classList.add("dot");
 	if (i===slides_check){
-		dot.classList.add("dot_selected")
+		points.classList.add("dot_selected")
 	}
-	bulletpoints.appendChild(dot)
+	points.addEventListener('click', () => showSlide(i));
+	bulletpoints.appendChild(points)
 	
+
+
 }
