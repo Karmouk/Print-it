@@ -31,9 +31,11 @@ function showSlide(media){
 	
 	if(media<0){
 		media=slides.length-1;
+		console.log("Passage à la dernière slide");
 	}
 	if (media>slides.length-1){
 		media=0;
+		console.log("Retour à la première slide");
 	}
 	slides_check=media;
 	BannerTxt.innerHTML=slides[media].tagLine
@@ -49,6 +51,7 @@ function showSlide(media){
 function slidegauche(){
 	slides_check--
 	showSlide(slides_check)
+	console.log("slide à gauche")
 
 	
 	
@@ -57,6 +60,8 @@ function slidegauche(){
 function slidedroite(){
 	slides_check++
 	showSlide(slides_check)
+	console.log("slide à droite")
+	 
 }
 
 
